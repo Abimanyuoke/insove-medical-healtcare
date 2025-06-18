@@ -1,7 +1,7 @@
 
-# 🛠️ TA-Ordering Project Guide
+# 🛠️ Project Guide
 
-Welcome to the TA-Ordering project!  
+Welcome to the project guide!  
 This guide will help you to clone the project, run it locally, edit it, and push your changes back to GitHub.
 
 ---
