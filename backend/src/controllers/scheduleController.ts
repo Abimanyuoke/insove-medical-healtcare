@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// ✅ Ambil semua jadwal
+
 export const getAllSchedules = async (req: Request, res: Response) => {
   try {
     const schedules = await prisma.schedule.findMany({
@@ -22,7 +22,7 @@ export const getAllSchedules = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Ambil satu jadwal berdasarkan ID
+
 export const getScheduleById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -48,7 +48,6 @@ export const getScheduleById = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Buat jadwal baru
 export const createSchedule = async (req: Request, res: Response) => {
   const { doctorId, date, startTime, endTime } = req.body;
 
@@ -68,7 +67,7 @@ export const createSchedule = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Update jadwal
+
 export const updateSchedule = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { doctorId, date, startTime, endTime } = req.body;
@@ -90,7 +89,7 @@ export const updateSchedule = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Hapus jadwal
+
 export const deleteSchedule = async (req: Request, res: Response) => {
   const { id } = req.params;
 

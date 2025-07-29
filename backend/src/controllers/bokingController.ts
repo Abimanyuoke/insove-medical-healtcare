@@ -3,7 +3,7 @@ import { PrismaClient, BookingStatus } from "@prisma/client";
 
 const prisma = new PrismaClient({ errorFormat: "pretty" });
 
-// GET all bookings (optional filter by status)
+
 export const getAllBookings = async (req: Request, res: Response) => {
   try {
     const { status } = req.query;
@@ -48,7 +48,7 @@ export const getAllBookings = async (req: Request, res: Response) => {
   }
 };
 
-// GET booking by ID
+
 export const getBookingById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -89,7 +89,7 @@ export const getBookingById = async (req: Request, res: Response) => {
   }
 };
 
-// POST create a new booking
+
 export const createBooking = async (req: Request, res: Response) => {
   try {
     const { userId, scheduleId, status } = req.body;
@@ -122,7 +122,7 @@ export const createBooking = async (req: Request, res: Response) => {
   }
 };
 
-// PUT update booking status
+
 export const updateBooking = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -166,7 +166,7 @@ export const updateBooking = async (req: Request, res: Response) => {
   }
 };
 
-// DELETE booking
+
 export const deleteBooking = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

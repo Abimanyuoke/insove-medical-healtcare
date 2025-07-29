@@ -73,7 +73,7 @@ export const createDoctor = async (req: Request, res: Response) => {
   try {
     const { userId, specialization, bio, location } = req.body;
 
-    // Check if the user exists
+   
     const user = await prisma.user.findUnique({
       where: { id: Number(userId) },
     });
