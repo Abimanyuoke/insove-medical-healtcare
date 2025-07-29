@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  DOCTOR
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum Specialization {
+  GENERAL_PRACTITIONER
+  PEDIATRICIAN
+  DERMATOLOGIST
+  CARDIOLOGIST
+  NEUROLOGIST
+  ORTHOPEDIC
+  OPHTHALMOLOGIST
+  OTOLARYNGOLOGIST
+  GYNECOLOGIST
+  PSYCHIATRIST
+  DENTIST
+  INTERNIST
+  RADIOLOGIST
+  ANESTHESIOLOGIST
+  UROLOGIST
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  uuid            String   @unique @default("")
+  name            String   @default("")
+  email           String   @unique @default("")
+  password        String   @default("")
+  profile_picture String   @default("")
+  role            Role     @default(USER)
+  alamat          String   @default("")
+  telephone       String   @default("")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  doctor    Doctor?
+  bookings  Booking[]
+}
+
+model Doctor {
+  id              Int             @id @default(autoincrement())
+  userId          Int             @unique
+  specialization  Specialization
+  bio             String?
+  location        String?
+  user            User            @relation(fields: [userId], references: [id])
+  schedules       Schedule[]
+}
+
+model Schedule {
+  id        Int       @id @default(autoincrement())
+  doctorId  Int
+  date      DateTime
+  startTime DateTime
+  endTime   DateTime
+  doctor    Doctor    @relation(fields: [doctorId], references: [id])
+  bookings  Booking[]
+}
+
+model Booking {
+  id         Int           @id @default(autoincrement())
+  userId     Int
+  scheduleId Int
+  status     BookingStatus @default(PENDING)
+  createdAt  DateTime      @default(now())
+  user       User          @relation(fields: [userId], references: [id])
+  schedule   Schedule      @relation(fields: [scheduleId], references: [id])
+}
