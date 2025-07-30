@@ -146,7 +146,7 @@ const DashboardPage = () => {
                         </div>
                         {/* image */}
                         <div className='hero__img hidden xl:flex max-w-[814px] self-end'>
-                            <img src="/images/hero/BG.png" alt="" />
+                            <img src="/images/hero/BG2.png" alt="" className='w-[700px]'/>
                         </div>
                     </div>
                 </div>
@@ -574,8 +574,8 @@ const DashboardPage = () => {
                                 </div>
                             </div>
                         </div>
-                                                    {/* <!-- Swiper pagination --> */}
-                            <div className="swiper-pagination"></div>
+                        {/* <!-- Swiper pagination --> */}
+                        <div className="swiper-pagination"></div>
                     </div>
                 </div>
             </section>
